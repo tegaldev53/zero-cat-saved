@@ -3,6 +3,52 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 var moment = require('moment-timezone');
 
+const doLogin = (page) => {
+    return new Promise(async (resolve, reject) => {
+        let url = 'http://shopee.co.id/buyer/login';
+        await page.goto(url, { waitUntil: 'domcontentloaded' });
+
+        // waiting selector
+        await page.waitForSelector('._1kUCZd');
+
+        // define elements
+        const userEl = await page.evaluateHandle(() => document.querySelector('._1kUCZd'));
+        const passEl = await page.evaluateHandle(() => document.querySelectorAll('._1kUCZd')[1]);
+
+        await userEl.type('083819333903'); // fill username
+        await passEl.type('Umardev155'); // fill password
+
+        // submit button
+        await page.evaluate(() => {
+            return new Promise((resolve, reject) => {
+                let targetEl;
+                let search = setInterval(() => {
+                    targetEl = document.querySelector('._20cPBy');
+
+                    // if button 
+                    if (targetEl.getAttribute('disabled') == null) {
+                        resolve('finded');
+                        document.querySelector('._20cPBy').click(); // submit
+                        clearInterval(search);
+                    }
+                }, 100);
+            });
+        });
+
+        // detect success login
+        await page.waitForSelector('.avatar');
+        await page.evaluate(() => {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    res(true);
+                }, 5000);
+            });
+        });
+        await page.close();
+        resolve('login success');
+    });
+}
+
 /**
  * Timeout order
  */
@@ -41,6 +87,8 @@ const App = async () => {
     }
 
     const browser = await puppeteer.launch(config);
+    const LP = await browser.newPage();
+    await doLogin(LP)
     const CP = await browser.newPage();
     const PP = await browser.newPage();
 
@@ -50,7 +98,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('23:50');
+    await Timeout('02:59');
 
     // reload
     console.time('render product page');
@@ -59,21 +107,26 @@ const App = async () => {
 
     // waiting atc
     console.log('waiting atc')
-    await PP.evaluate(() => {
-        let atcBtn;
-        let src = setInterval(() => {
-            return new Promise((res, rej) => {
-                atcBtn = document.querySelector('.product-bottom-panel__add-to-cart');
+    
+    // await PP.evaluate(() => {
+    //     let atcBtn;
+    //     let src = setInterval(() => {
+    //         return new Promise((res, rej) => {
+    //             atcBtn = document.querySelector('.product-bottom-panel__add-to-cart');
 
-                if (atcBtn != null) {
-                    atcBtn.click();
-                    res('finded atc button');
-                    clearInterval(src);
-                }
-            });
-        }, 100);
-    })
+    //             if (atcBtn != null) {
+    //                 res('finded atc button');
+    //                 clearInterval(src);
+    //             }
+    //         });
+    //     }, 100);
+    // })
+    // console.log('cloc')
+    console.time('waiting atc')
+    await PP.waitForSelector('.product-bottom-panel__add-to-cart');
+    console.timeEnd('waiting atc')
 
+    await PP.click('.product-bottom-panel__add-to-cart');
     
     // setup category
     console.log('setup category')
@@ -122,9 +175,6 @@ const App = async () => {
         });
     });
 
-    await PP.screenshot({path: './public/pay.png'})
-    await browser.close();
-    return
 
     // +++++++++++++++++++ cart ++++++++++++++++++++++++
     console.time('reload-cart');
@@ -175,6 +225,20 @@ const App = async () => {
     console.timeEnd('finding-product');
 
     await CP.screenshot({path: './public/cart.png'})
+    console.time('logout')
+    await CP.goto('https://shopee.co.id/buyer/logout')
+    console.time('logout')
+
+    await page.evaluate(() => {
+        return new Promise((res, rej) => {
+            setTimeout(() => {
+                res(true);
+            }, 5000);
+        });
+    });
+
+    await browser.close();
+    return
 
     // click checkout button
     await CP.evaluate(() => {
