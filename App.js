@@ -32,7 +32,7 @@ const App = async () => {
     ];
 
     let config = {
-        headless: false,
+        headless: true,
         userDataDir: 'wd',
         ignoreHTTPSErrors: true,
         args: args,
@@ -41,12 +41,12 @@ const App = async () => {
     }
 
     const browser = await puppeteer.launch(config);
-    // const CP = await browser.newPage();
+    const CP = await browser.newPage();
     const PP = await browser.newPage();
 
     console.time('render-init-page');
     await PP.goto("https://shopee.co.id/%E2%9D%A4%EF%B8%8FGlamouroseshop%E2%9D%A4%EF%B8%8FMake-Over-Color-Hypnose-Creamy-Lipmatte-i.29291937.5647214160", {waitUntil: "domcontentloaded"});
-    // await CP.goto("https://shopee.co.id/cart", {waitUntil: "domcontentloaded"});
+    await CP.goto("https://shopee.co.id/cart", {waitUntil: "domcontentloaded"});
     console.timeEnd('render-init-page');
 
     // timout
@@ -74,46 +74,60 @@ const App = async () => {
     })
 
     // setup category
-    var categories;
-    var sizeCat;
-    var subCatName1 = '02 FLIRT'.toLowerCase().replace(/[^a-z-0-9]+/g, '');
+    await PP.evaluate(() => {
+        function strcov(str) {
+            return str.toLowerCase().replace(/[^a-z-0-9]+/g, '');
+        }
 
-    function strcov(str) {
-        return str.toLowerCase().replace(/[^a-z-0-9]+/g, '');
-    }
+        return new Promise((res, rej) => {
+            var categories;
+            var sizeCat;
+            var subCatName1 = '02 FLIRT'.toLowerCase().replace(/[^a-z-0-9]+/g, '');
 
-    var search = setInterval(() => {
-        categories = document.querySelectorAll('._1AG6vA');
-        sizeCat = categories.length;
+            var search = setInterval(() => {
+                categories = document.querySelectorAll('._1AG6vA');
+                sizeCat = categories.length;
 
-        if (sizeCat != 0) {
-            // loop categories
-            for (var i = 0; i < sizeCat; i++) {
-                if (i == 0) {
-                    var subCat = categories[i].querySelectorAll(':not(.EMBVFN)');
-                    var subCatSize = subCat.length;
-                    
-                    // loop sub categories
-                    var subCatName;
-                    for (var x = 0; x < subCatSize; x++) {
-                        subCatName = strcov(subCat[x].textContent); 
-                        console.log(strcov(subCatName))
+                if (sizeCat != 0) {
+                    // loop categories
+                    for (var i = 0; i < sizeCat; i++) {
+                        if (i == 0) {
+                            var subCat = categories[i].querySelectorAll(':not(.EMBVFN)');
+                            var subCatSize = subCat.length;
+                            
+                            // loop sub categories
+                            var subCatName;
+                            for (var x = 0; x < subCatSize; x++) {
+                                subCatName = strcov(subCat[x].textContent); 
+                                console.log(strcov(subCatName))
 
-                        if (subCatName == subCatName1) {
-                            subCat[x].click()
-                            document.querySelector('.stardust-button--block').click();
-                            break;
+                                if (subCatName == subCatName1) {
+                                    subCat[x].click()
+                                    document.querySelector('.stardust-button--block').click();
+                                    break;
+                                }
+                            }
                         }
                     }
+                    // end loop
+                    clearInterval(search);
+                    res('done');
                 }
-            }
-            // end loop
-            clearInterval(search);
-        }
+            });
+        });
     });
 
 
     // +++++++++++++++++++ cart ++++++++++++++++++++++++
+    console.time('reload-cart');
+    await CP.goto("https://shopee.co.id/cart", {waitUntil: "domcontentloaded"});
+    console.timeEnd('reload-cart');
+
+    await CP.screenshot({path: './public/cart.png'})
+
+    await browser.close();
+    return
+
     // waiting cb
     console.time('waiting-cb');
     await CP.evaluate(() => {
@@ -134,8 +148,8 @@ const App = async () => {
 
     // finding product
     console.time('finding-product');
-    let targetName = 'hello world';
-    await page.evaluate((targetName) => {
+    let targetName = '❤️Glamouroseshop❤️Make Over Color Hypnose Creamy Lipmatte';
+    await CP.evaluate((targetName) => {
         return new Promise((res, rej) => {
             var productCart = document.querySelectorAll('._17hSZB');
             var productCartSize = productCart.length;
@@ -155,13 +169,13 @@ const App = async () => {
     console.timeEnd('finding-product');
 
     // click checkout button
-    await page.evaluate(() => {
+    await CP.evaluate(() => {
         document.querySelector('.stardust-button--primary').click();
     });
 
     // wait pay button
     console.time('waiting-pay')
-    await page.evaluate(() => {
+    await CP.evaluate(() => {
         return new Promise((res, rej) => {
             let cb;
 
@@ -178,7 +192,7 @@ const App = async () => {
     console.timeEnd('waiting-pay')
 
     console.time('waiting-ready-pay')
-    await page.evaluate(() => {
+    await CP.evaluate(() => {
         return new Promise((res, rej) => {
             let price;
             let payBtn;
@@ -207,6 +221,9 @@ const App = async () => {
     });
     console.timeEnd('waiting-ready-pay')
     // ++++++++++++++++++++ cart end +++++++++++++++++++
+
+    await CP.screenshot({path: './public/pay.png'})
+    await browser.close();
     
 }
 
