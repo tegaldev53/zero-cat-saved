@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('38:50');
+    await Timeout('45:50');
 
     // reload
     console.time('render product page');
@@ -123,10 +123,6 @@ const App = async () => {
     await CP.goto("https://shopee.co.id/cart", {waitUntil: "domcontentloaded"});
     console.timeEnd('reload-cart');
 
-    await CP.screenshot({path: './public/cart.png'})
-
-    await browser.close();
-    return
 
     // waiting cb
     console.time('waiting-cb');
@@ -167,6 +163,11 @@ const App = async () => {
         });
     }, targetName);
     console.timeEnd('finding-product');
+
+    await CP.screenshot({path: './public/cart.png'})
+
+    await browser.close();
+    return
 
     // click checkout button
     await CP.evaluate(() => {
