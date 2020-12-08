@@ -47,22 +47,19 @@ const App = async () => {
 
     console.time('render-init-page');
     await PP.goto("https://shopee.co.id/buyer/login", {waitUntil: "networkidle2"});
-    await PP.goto("https://shopee.co.id/%E2%9D%A4%EF%B8%8FGlamouroseshop%E2%9D%A4%EF%B8%8FMake-Over-Color-Hypnose-Creamy-Lipmatte-i.29291937.5647214160", {waitUntil: "domcontentloaded"});
+    await PP.goto("https://shopee.co.id/Reebok-SUBLITE-PRIME-Men's-Running-Shoes-Black-i.234490784.6927804397", {waitUntil: "domcontentloaded"});
     await CP.goto("https://shopee.co.id/cart", {waitUntil: "domcontentloaded"});
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('46:50');
+    await Timeout('59:59');
 
     // reload
-    console.time('render product page');
-    await PP.goto("https://shopee.co.id/%E2%9D%A4%EF%B8%8FGlamouroseshop%E2%9D%A4%EF%B8%8FMake-Over-Color-Hypnose-Creamy-Lipmatte-i.29291937.5647214160", {waitUntil: "domcontentloaded"});
-    console.timeEnd('render product page');
+    console.time('order')
+    await PP.goto("https://shopee.co.id/Reebok-SUBLITE-PRIME-Men's-Running-Shoes-Black-i.234490784.6927804397", {waitUntil: "domcontentloaded"});
 
     // waiting atc
-    console.time('waiting atc')
     await PP.waitForSelector('.product-bottom-panel__add-to-cart');
-    console.timeEnd('waiting atc')
 
     await PP.evaluate(() => {
         return new Promise((res, rej) => {
@@ -75,7 +72,6 @@ const App = async () => {
     await PP.click('.product-bottom-panel__add-to-cart');
     
     // setup category
-    console.time('setup category')
     await PP.evaluate(() => {
 
 
@@ -86,7 +82,8 @@ const App = async () => {
 
             var categories;
             var sizeCat;
-            var subCatName1 = '02 FLIRT'.toLowerCase().replace(/[^a-z-0-9]+/g, '');
+            var subCatName1 = 'US 7'.toLowerCase().replace(/[^a-z-0-9]+/g, '');
+            var subCatName2 = 'US 7.5'.toLowerCase().replace(/[^a-z-0-9]+/g, '');
 
             var search = setInterval(() => {
                 categories = document.querySelectorAll('._1AG6vA');
@@ -105,7 +102,7 @@ const App = async () => {
                                 subCatName = strcov(subCat[x].textContent); 
                                 console.log(strcov(subCatName))
 
-                                if (subCatName == subCatName1) {
+                                if (subCatName == subCatName1 || subCatName == subCatName2) {
                                     subCat[x].click()
                                     document.querySelector('.stardust-button--block').click();
                                     break;
@@ -120,17 +117,13 @@ const App = async () => {
             });
         });
     });
-    console.timeEnd('setup category')
 
 
     // +++++++++++++++++++ cart ++++++++++++++++++++++++
-    console.time('reload-cart');
     await CP.goto("https://shopee.co.id/cart", {waitUntil: "domcontentloaded"});
-    console.timeEnd('reload-cart');
 
 
     // waiting cb
-    console.time('waiting-cb');
     await CP.evaluate(() => {
         return new Promise((res, rej) => {
             let cb;
@@ -145,11 +138,9 @@ const App = async () => {
             });
         });
     });
-    console.timeEnd('waiting-cb');
 
     // finding product
-    console.time('finding-product');
-    let targetName = '❤️Glamouroseshop❤️Make Over Color Hypnose Creamy Lipmatte';
+    let targetName = "Reebok SUBLITE PRIME Men's Running Shoes - Black";
     await CP.evaluate((targetName) => {
         return new Promise((res, rej) => {
             var productCart = document.querySelectorAll('._17hSZB');
@@ -167,7 +158,6 @@ const App = async () => {
             }
         });
     }, targetName);
-    console.timeEnd('finding-product');
 
     // click checkout button
     await CP.evaluate(() => {
@@ -175,7 +165,6 @@ const App = async () => {
     });
 
     // wait pay button
-    console.time('waiting-pay')
     await CP.evaluate(() => {
         return new Promise((res, rej) => {
             let cb;
@@ -190,10 +179,7 @@ const App = async () => {
             });
         });
     });
-    console.timeEnd('waiting-pay')
 
-    console.log('waiting ready pay')
-    console.time('waiting-ready-pay')
     await CP.evaluate(() => {
         return new Promise((res, rej) => {
             let price;
@@ -221,7 +207,7 @@ const App = async () => {
             }, 100);
         });
     });
-    console.timeEnd('waiting-ready-pay')
+    console.timeEnd('order')
     // ++++++++++++++++++++ cart end +++++++++++++++++++
 
     await CP.screenshot({path: './public/pay.png'})
