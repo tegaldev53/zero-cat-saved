@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('07:50');
+    await Timeout('10:00');
 
     // reload
     console.time('render product page');
@@ -74,17 +74,16 @@ const App = async () => {
         }, 100);
     })
 
-    await CP.screenshot({path: './public/pay.png'})
-    await browser.close();
-
     // setup category
     console.log('setup category')
     await PP.evaluate(() => {
-        function strcov(str) {
-            return str.toLowerCase().replace(/[^a-z-0-9]+/g, '');
-        }
+
 
         return new Promise((res, rej) => {
+            function strcov(str) {
+                return str.toLowerCase().replace(/[^a-z-0-9]+/g, '');
+            }
+
             var categories;
             var sizeCat;
             var subCatName1 = '02 FLIRT'.toLowerCase().replace(/[^a-z-0-9]+/g, '');
@@ -121,6 +120,9 @@ const App = async () => {
             });
         });
     });
+
+    await CP.screenshot({path: './public/pay.png'})
+    await browser.close();
 
 
     // +++++++++++++++++++ cart ++++++++++++++++++++++++
