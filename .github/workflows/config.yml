@@ -1,0 +1,53 @@
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    name: shopee
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+      - name: set-env
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+      - name: create-folder
+        run: mkdir public apps
+      - name: install-package
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+          sudo apt-get install -y gnupg
+          sudo apt-get install -y wget
+          sudo apt-get install -y unzip
+          
+      - name: download-google-chrome
+        run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+      - name: install-google-chrome
+        run: |
+          ls
+          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+          google-chrome --version
+
+      - name: download-chromedriver
+        run: wget https://chromedriver.storage.googleapis.com/87.0.4280.20/chromedriver_linux64.zip
+      - name: install-chromedriver
+        run: |
+          ls
+          sudo rm /usr/bin/chromedriver
+          sudo unzip chromedriver_linux64.zip -d /usr/bin
+          chromedriver --version
+
+      - name: install-nodejs-packages
+        run: npm install
+
+      - name: run-script
+        run: node App.js
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: public
+
+
