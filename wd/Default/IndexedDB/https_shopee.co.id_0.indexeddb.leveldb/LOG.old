@@ -1,20 +1,41 @@
-2020/12/08-21:00:52.525 2d04 Reusing MANIFEST /home/umar/Dev/Scrapping/SHOPEE/zero-cat-saved/~/.config/wd/Default/IndexedDB/https_shopee.co.id_0.indexeddb.leveldb/MANIFEST-000001
-2020/12/08-21:00:52.525 2d04 Recovering log #25
-2020/12/08-21:00:52.526 2d04 Reusing old log /home/umar/Dev/Scrapping/SHOPEE/zero-cat-saved/~/.config/wd/Default/IndexedDB/https_shopee.co.id_0.indexeddb.leveldb/000025.log 
-2020/12/08-21:00:52.608 2d05 Level-0 table #29: started
-2020/12/08-21:00:52.610 2d05 Level-0 table #29: 7839 bytes OK
-2020/12/08-21:00:52.612 2d05 Delete type=0 #25
-2020/12/08-21:00:52.614 2d05 Manual compaction at level-0 from '\x00\x0b\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0b\x00\x00\x05' @ 5922 : 1
-2020/12/08-21:00:52.614 2d05 Compacting 1@0 + 1@1 files
-2020/12/08-21:00:52.617 2d05 Generated table #30@0: 424 keys, 13281 bytes
-2020/12/08-21:00:52.617 2d05 Compacted 1@0 + 1@1 files => 13281 bytes
-2020/12/08-21:00:52.622 2d05 compacted to: files[ 0 1 1 0 0 0 0 ]
-2020/12/08-21:00:52.623 2d05 Delete type=2 #29
-2020/12/08-21:00:52.627 2d05 Manual compaction at level-0 from '\x00\x0b\x00\x00\x05' @ 5922 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at (end)
-2020/12/08-21:00:53.574 2d04 Compacting 1@1 + 1@2 files
-2020/12/08-21:00:53.579 2d04 Generated table #31@1: 273 keys, 16505 bytes
-2020/12/08-21:00:53.579 2d04 Compacted 1@1 + 1@2 files => 16505 bytes
-2020/12/08-21:00:53.581 2d04 compacted to: files[ 0 0 1 0 0 0 0 ]
-2020/12/08-21:00:53.582 2d04 Delete type=2 #26
-2020/12/08-21:00:53.582 2d04 Delete type=2 #23
-2020/12/08-21:00:53.582 2d04 Delete type=2 #30
+2020/12/08-23:24:57.335 7cc4 Reusing MANIFEST /home/umar/Dev/Scrapping/SHOPEE/zero-cat-saved/wd/Default/IndexedDB/https_shopee.co.id_0.indexeddb.leveldb/MANIFEST-000001
+2020/12/08-23:24:57.335 7cc4 Recovering log #253
+2020/12/08-23:24:57.336 7cc4 Reusing old log /home/umar/Dev/Scrapping/SHOPEE/zero-cat-saved/wd/Default/IndexedDB/https_shopee.co.id_0.indexeddb.leveldb/000253.log 
+2020/12/08-23:24:57.810 7cc5 Level-0 table #258: started
+2020/12/08-23:24:57.812 7cc5 Level-0 table #258: 14330 bytes OK
+2020/12/08-23:24:57.815 7cc5 Delete type=0 #253
+2020/12/08-23:24:57.815 7cc5 Manual compaction at level-0 from '\x00T\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00U\x00\x00\x00' @ 0 : 0; will stop at (end)
+2020/12/08-23:24:58.250 7cc5 Compacting 1@1 + 1@2 files
+2020/12/08-23:24:58.254 7cc5 Generated table #259@1: 987 keys, 39181 bytes
+2020/12/08-23:24:58.254 7cc5 Compacted 1@1 + 1@2 files => 39181 bytes
+2020/12/08-23:24:58.257 7cc5 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/12/08-23:24:58.257 7cc5 Delete type=2 #258
+2020/12/08-23:24:58.257 7cc5 Delete type=2 #255
+2020/12/08-23:25:04.032 7cb0 Level-0 table #261: started
+2020/12/08-23:25:04.034 7cb0 Level-0 table #261: 11539 bytes OK
+2020/12/08-23:25:04.036 7cb0 Delete type=0 #257
+2020/12/08-23:25:04.037 7cb0 Manual compaction at level-0 from '\x00U\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00V\x00\x00\x00' @ 0 : 0; will stop at (end)
+2020/12/08-23:25:04.569 7cb0 Compacting 1@1 + 1@2 files
+2020/12/08-23:25:04.573 7cb0 Generated table #262@1: 991 keys, 39717 bytes
+2020/12/08-23:25:04.573 7cb0 Compacted 1@1 + 1@2 files => 39717 bytes
+2020/12/08-23:25:04.576 7cb0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/12/08-23:25:04.576 7cb0 Delete type=2 #261
+2020/12/08-23:25:04.576 7cb0 Delete type=2 #259
+2020/12/08-23:25:14.501 7cb0 Level-0 table #264: started
+2020/12/08-23:25:14.505 7cb0 Level-0 table #264: 23431 bytes OK
+2020/12/08-23:25:14.509 7cb0 Delete type=0 #260
+2020/12/08-23:25:14.509 7cb0 Manual compaction at level-0 from '\x00V\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00W\x00\x00\x00' @ 0 : 0; will stop at (end)
+2020/12/08-23:25:15.146 7cba Compacting 1@1 + 1@2 files
+2020/12/08-23:25:15.152 7cba Generated table #265@1: 1018 keys, 41349 bytes
+2020/12/08-23:25:15.152 7cba Compacted 1@1 + 1@2 files => 41349 bytes
+2020/12/08-23:25:15.153 7cba compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/12/08-23:25:15.154 7cba Delete type=2 #264
+2020/12/08-23:25:15.154 7cba Delete type=2 #262
+2020/12/08-23:25:16.563 7caf Level-0 table #267: started
+2020/12/08-23:25:16.565 7caf Level-0 table #267: 14376 bytes OK
+2020/12/08-23:25:16.567 7caf Delete type=0 #263
+2020/12/08-23:25:16.568 7caf Manual compaction at level-0 from '\x00W\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00X\x00\x00\x00' @ 0 : 0; will stop at (end)
+2020/12/08-23:25:17.240 7caf Compacting 1@1 + 1@2 files
+2020/12/08-23:25:17.244 7caf Generated table #268@1: 1020 keys, 41648 bytes
+2020/12/08-23:25:17.244 7caf Compacted 1@1 + 1@2 files => 41648 bytes
+2020/12/08-23:25:17.245 7caf compacted to: files[ 0 0 1 0 0 0 0 ]
