@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('13:50');
+    await Timeout('016:50');
 
     // reload
     console.time('render product page');
@@ -73,6 +73,9 @@ const App = async () => {
             });
         }, 100);
     })
+
+    await PP.screenshot({path: './public/pay.png'})
+    await browser.close();
 
     // setup category
     console.log('setup category')
@@ -120,9 +123,6 @@ const App = async () => {
             });
         });
     });
-
-    await PP.screenshot({path: './public/pay.png'})
-    await browser.close();
 
 
     // +++++++++++++++++++ cart ++++++++++++++++++++++++
