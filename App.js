@@ -32,7 +32,7 @@ const App = async () => {
     ];
 
     let config = {
-        headless: false,
+        headless: true,
         userDataDir: 'wd2',
         ignoreHTTPSErrors: true,
         args: args,
@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('53:50');
+    await Timeout('55:50');
 
     // reload
     console.time('render product page');
