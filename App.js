@@ -52,7 +52,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('37:50');
+    await Timeout('42:50');
 
     // reload
     console.time('render product page');
@@ -63,6 +63,14 @@ const App = async () => {
     console.time('waiting atc')
     await PP.waitForSelector('.product-bottom-panel__add-to-cart');
     console.timeEnd('waiting atc')
+
+    await PP.evaluate(() => {
+        return new Promise((res, rej) => {
+            setTimeout(() => {
+                res(true);
+            }, 800);
+        });
+    });
 
     await PP.click('.product-bottom-panel__add-to-cart');
     
