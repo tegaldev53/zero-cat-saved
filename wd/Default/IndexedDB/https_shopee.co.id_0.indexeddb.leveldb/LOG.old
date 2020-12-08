@@ -1,0 +1,20 @@
+2020/12/08-21:00:52.525 2d04 Reusing MANIFEST /home/umar/Dev/Scrapping/SHOPEE/zero-cat-saved/~/.config/wd/Default/IndexedDB/https_shopee.co.id_0.indexeddb.leveldb/MANIFEST-000001
+2020/12/08-21:00:52.525 2d04 Recovering log #25
+2020/12/08-21:00:52.526 2d04 Reusing old log /home/umar/Dev/Scrapping/SHOPEE/zero-cat-saved/~/.config/wd/Default/IndexedDB/https_shopee.co.id_0.indexeddb.leveldb/000025.log 
+2020/12/08-21:00:52.608 2d05 Level-0 table #29: started
+2020/12/08-21:00:52.610 2d05 Level-0 table #29: 7839 bytes OK
+2020/12/08-21:00:52.612 2d05 Delete type=0 #25
+2020/12/08-21:00:52.614 2d05 Manual compaction at level-0 from '\x00\x0b\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0b\x00\x00\x05' @ 5922 : 1
+2020/12/08-21:00:52.614 2d05 Compacting 1@0 + 1@1 files
+2020/12/08-21:00:52.617 2d05 Generated table #30@0: 424 keys, 13281 bytes
+2020/12/08-21:00:52.617 2d05 Compacted 1@0 + 1@1 files => 13281 bytes
+2020/12/08-21:00:52.622 2d05 compacted to: files[ 0 1 1 0 0 0 0 ]
+2020/12/08-21:00:52.623 2d05 Delete type=2 #29
+2020/12/08-21:00:52.627 2d05 Manual compaction at level-0 from '\x00\x0b\x00\x00\x05' @ 5922 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at (end)
+2020/12/08-21:00:53.574 2d04 Compacting 1@1 + 1@2 files
+2020/12/08-21:00:53.579 2d04 Generated table #31@1: 273 keys, 16505 bytes
+2020/12/08-21:00:53.579 2d04 Compacted 1@1 + 1@2 files => 16505 bytes
+2020/12/08-21:00:53.581 2d04 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/12/08-21:00:53.582 2d04 Delete type=2 #26
+2020/12/08-21:00:53.582 2d04 Delete type=2 #23
+2020/12/08-21:00:53.582 2d04 Delete type=2 #30

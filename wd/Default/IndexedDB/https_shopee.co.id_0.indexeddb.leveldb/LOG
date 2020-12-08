@@ -1,0 +1,13 @@
+2020/12/08-21:03:45.461 2e6b Reusing MANIFEST /home/umar/Dev/Scrapping/SHOPEE/zero-cat-saved/wd/Default/IndexedDB/https_shopee.co.id_0.indexeddb.leveldb/MANIFEST-000001
+2020/12/08-21:03:45.461 2e6b Recovering log #28
+2020/12/08-21:03:45.462 2e6b Reusing old log /home/umar/Dev/Scrapping/SHOPEE/zero-cat-saved/wd/Default/IndexedDB/https_shopee.co.id_0.indexeddb.leveldb/000028.log 
+2020/12/08-21:03:46.157 2e6b Level-0 table #34: started
+2020/12/08-21:03:46.161 2e6b Level-0 table #34: 26674 bytes OK
+2020/12/08-21:03:46.165 2e6b Delete type=0 #28
+2020/12/08-21:03:46.165 2e6b Manual compaction at level-0 from '\x00\x0c\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0d\x00\x00\x00' @ 0 : 0; will stop at (end)
+2020/12/08-21:03:47.130 2e69 Compacting 1@1 + 1@2 files
+2020/12/08-21:03:47.134 2e69 Generated table #35@1: 303 keys, 18235 bytes
+2020/12/08-21:03:47.134 2e69 Compacted 1@1 + 1@2 files => 18235 bytes
+2020/12/08-21:03:47.136 2e69 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/12/08-21:03:47.137 2e69 Delete type=2 #34
+2020/12/08-21:03:47.137 2e69 Delete type=2 #31
