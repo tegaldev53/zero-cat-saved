@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('58:50');
+    await Timeout('31:50');
 
     // reload
     console.time('render product page');
