@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('10:00');
+    await Timeout('13:50');
 
     // reload
     console.time('render product page');
@@ -121,7 +121,7 @@ const App = async () => {
         });
     });
 
-    await CP.screenshot({path: './public/pay.png'})
+    await PP.screenshot({path: './public/pay.png'})
     await browser.close();
 
 
