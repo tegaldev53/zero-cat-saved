@@ -33,7 +33,7 @@ const App = async () => {
 
     let config = {
         headless: true,
-        userDataDir: 'wd2',
+        userDataDir: 'wd',
         ignoreHTTPSErrors: true,
         args: args,
         ignoreDefaultArgs: ['--enable-automation'],
@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('21:50');
+    await Timeout('23:50');
 
     // reload
     console.time('render product page');
@@ -74,10 +74,7 @@ const App = async () => {
         }, 100);
     })
 
-    await PP.screenshot({path: './public/pay.png'})
-    await browser.close();
-    return
-
+    
     // setup category
     console.log('setup category')
     await PP.evaluate(() => {
@@ -125,6 +122,9 @@ const App = async () => {
         });
     });
 
+    await PP.screenshot({path: './public/pay.png'})
+    await browser.close();
+    return
 
     // +++++++++++++++++++ cart ++++++++++++++++++++++++
     console.time('reload-cart');
