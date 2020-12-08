@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('02:50');
+    await Timeout('07:50');
 
     // reload
     console.time('render product page');
@@ -73,6 +73,9 @@ const App = async () => {
             });
         }, 100);
     })
+
+    await CP.screenshot({path: './public/pay.png'})
+    await browser.close();
 
     // setup category
     console.log('setup category')
@@ -127,6 +130,7 @@ const App = async () => {
 
 
     // waiting cb
+    console.log('waiting cb')
     console.time('waiting-cb');
     await CP.evaluate(() => {
         return new Promise((res, rej) => {
@@ -145,6 +149,7 @@ const App = async () => {
     console.timeEnd('waiting-cb');
 
     // finding product
+    console.log('finding product')
     console.time('finding-product');
     let targetName = '❤️Glamouroseshop❤️Make Over Color Hypnose Creamy Lipmatte';
     await CP.evaluate((targetName) => {
