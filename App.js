@@ -32,8 +32,8 @@ const App = async () => {
     ];
 
     let config = {
-        headless: true,
-        userDataDir: 'wd',
+        headless: false,
+        userDataDir: 'wd2',
         ignoreHTTPSErrors: true,
         args: args,
         ignoreDefaultArgs: ['--enable-automation'],
@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('45:50');
+    await Timeout('53:50');
 
     // reload
     console.time('render product page');
@@ -165,9 +165,6 @@ const App = async () => {
     console.timeEnd('finding-product');
 
     await CP.screenshot({path: './public/cart.png'})
-
-    await browser.close();
-    return
 
     // click checkout button
     await CP.evaluate(() => {
