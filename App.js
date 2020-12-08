@@ -52,7 +52,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('42:50');
+    await Timeout('46:50');
 
     // reload
     console.time('render product page');
@@ -169,8 +169,6 @@ const App = async () => {
     }, targetName);
     console.timeEnd('finding-product');
 
-    await CP.screenshot({path: './public/cart.png'})
-
     // click checkout button
     await CP.evaluate(() => {
         document.querySelector('.stardust-button--primary').click();
@@ -216,7 +214,7 @@ const App = async () => {
 
                 if (price.textContent != 'Rp') {
                     payBtn = document.querySelector('.page-checkout-place-order-section__button');
-                    // payBtn.click();
+                    payBtn.click();
                     res('pay found');
                     clearInterval(finding);
                 }
