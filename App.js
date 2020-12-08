@@ -50,7 +50,7 @@ const App = async () => {
     console.timeEnd('render-init-page');
 
     // timout
-    await Timeout('55:50');
+    await Timeout('02:50');
 
     // reload
     console.time('render product page');
@@ -58,6 +58,7 @@ const App = async () => {
     console.timeEnd('render product page');
 
     // waiting atc
+    console.log('waiting atc')
     await PP.evaluate(() => {
         let atcBtn;
         let src = setInterval(() => {
@@ -74,6 +75,7 @@ const App = async () => {
     })
 
     // setup category
+    console.log('setup category')
     await PP.evaluate(() => {
         function strcov(str) {
             return str.toLowerCase().replace(/[^a-z-0-9]+/g, '');
@@ -172,6 +174,7 @@ const App = async () => {
     });
 
     // wait pay button
+    console.log('waiting pay')
     console.time('waiting-pay')
     await CP.evaluate(() => {
         return new Promise((res, rej) => {
@@ -189,6 +192,7 @@ const App = async () => {
     });
     console.timeEnd('waiting-pay')
 
+    console.log('waiting ready pay')
     console.time('waiting-ready-pay')
     await CP.evaluate(() => {
         return new Promise((res, rej) => {
